@@ -59,27 +59,21 @@ const CartItem = ({ data }) => {
                             <div className="font-semibold">Size:</div>
                             <select
                                 className="hover:text-black"
-                                onChange={(e) =>
-                                    updateCartItem(e, "selectedSize")
-                                }
-                            >
+                                onChange={(e) => updateCartItem(e, "selectedSize")}
+                                defaultValue={data.selectedSize}
+                                >
                                 {p.size.data.map((item, i) => {
                                     return (
-                                        <option
-                                            key={i}
-                                            value={item.size}
-                                            disabled={
-                                                !item.enabled ? true : false
-                                            }
-                                            selected={
-                                                data.selectedSize === item.size
-                                            }
-                                        >
-                                            {item.size}
-                                        </option>
+                                    <option
+                                        key={i}
+                                        value={item.size}
+                                        disabled={!item.enabled}
+                                    >
+                                        {item.size}
+                                    </option>
                                     );
                                 })}
-                            </select>
+                                </select>
                         </div>
 
                         <div className="flex items-center gap-1">
@@ -87,22 +81,19 @@ const CartItem = ({ data }) => {
                             <select
                                 className="hover:text-black"
                                 onChange={(e) => updateCartItem(e, "quantity")}
-                            >
-                                {Array.from(
-                                    { length: 10 },
-                                    (_, i) => i + 1
-                                ).map((q, i) => {
+                                defaultValue={data.quantity}
+                                >
+                                {Array.from({ length: 10 }, (_, i) => i + 1).map((q, i) => {
                                     return (
-                                        <option
-                                            key={i}
-                                            value={q}
-                                            selected={data.quantity === q}
-                                        >
-                                            {q}
-                                        </option>
+                                    <option
+                                        key={i}
+                                        value={q}
+                                    >
+                                        {q}
+                                    </option>
                                     );
                                 })}
-                            </select>
+                                </select>
                         </div>
                     </div>
                     <RiDeleteBin6Line
