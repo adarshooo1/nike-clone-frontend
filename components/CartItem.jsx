@@ -1,10 +1,8 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { updateCart, removeFromCart } from "@/store/cartSlice";
 import { useDispatch } from "react-redux";
-
-
 const CartItem = ({ data }) => {
     const p = data.attributes;
 
@@ -61,15 +59,21 @@ const CartItem = ({ data }) => {
                             <div className="font-semibold">Size:</div>
                             <select
                                 className="hover:text-black"
-                                onChange={(e) => updateCartItem(e, "selectedSize") }
+                                onChange={(e) =>
+                                    updateCartItem(e, "selectedSize")
+                                }
                             >
                                 {p.size.data.map((item, i) => {
                                     return (
                                         <option
                                             key={i}
                                             value={item.size}
-                                            disabled={ !item.enabled ? true : false }
-                                            selected={ data.selectedSize === item.size }
+                                            disabled={
+                                                !item.enabled ? true : false
+                                            }
+                                            selected={
+                                                data.selectedSize === item.size
+                                            }
                                         >
                                             {item.size}
                                         </option>
@@ -84,7 +88,10 @@ const CartItem = ({ data }) => {
                                 className="hover:text-black"
                                 onChange={(e) => updateCartItem(e, "quantity")}
                             >
-                                {Array.from( { length: 10 }, (_, i) => i + 1 ).map((q, i) => {
+                                {Array.from(
+                                    { length: 10 },
+                                    (_, i) => i + 1
+                                ).map((q, i) => {
                                     return (
                                         <option
                                             key={i}
@@ -98,17 +105,16 @@ const CartItem = ({ data }) => {
                             </select>
                         </div>
                     </div>
-            <RiDeleteBin6Line 
-                onClick={()=>{
-                    dispatch(removeFromCart({id: data.id}))
-                    }
-                }
-            className='cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]'/>
-          </div>
-
-      </div>
-    </div>
-  );
+                    <RiDeleteBin6Line
+                        onClick={() =>
+                            dispatch(removeFromCart({ id: data.id }))
+                        }
+                        className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
+                    />
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default CartItem
+export default CartItem;

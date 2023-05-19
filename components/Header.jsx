@@ -32,12 +32,12 @@ const Header = () => {
     setLastScrollY(window.scrollY)
   };
 
-  useEffect(()=>{
-    window.addEventListener("scroll", controlNavbar);
-    return()=> {
+useEffect(() => {
+  window.addEventListener("scroll", controlNavbar);
+  return () => {
     window.removeEventListener("scroll", controlNavbar);
-    }
-  },[lastScrollY])
+  };
+}, [lastScrollY, controlNavbar]);
 
 
   useEffect(()=> {
@@ -53,7 +53,7 @@ const Header = () => {
 
         <Wrapper className= "h-[60px] flex justify-between items-center " >
           <Link href="/"> {/*When we click at the logo then retun to the home page*/}
-          <img src='/logo.svg' className='w-[40px] md:w-[60px]'/>
+          <img alt="Nike-original-logo" src='/logo.svg' className='w-[40px] md:w-[60px]'/>
         </Link>
 
         <Menu
